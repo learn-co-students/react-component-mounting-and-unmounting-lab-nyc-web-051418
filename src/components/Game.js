@@ -5,6 +5,7 @@ import Pancake from './Pancake';
 class Game extends React.Component {
 
   constructor(props) {
+    console.log("constructor")
     super(props);
 
     this.state = {
@@ -17,7 +18,10 @@ class Game extends React.Component {
   }
 
   // TODO: create a componentWillMount() which will set the current time
-
+  componentWillMount(){
+    console.log("before render (mount)")
+    this.setCurrentTime()
+  }
   setCurrentTime = () => {
     this.setState({ time: new Date(Date.now())});
   }
@@ -40,6 +44,7 @@ class Game extends React.Component {
   }
 
   render() {
+    console.log("render game")
     const { pancakes, burnt, cooked, raw, time } = this.state;
     const pans = pancakes.map((pancake, index) => <Pancake key={index} id={pancake} takeItOff={this.takeItOff} />);
 
